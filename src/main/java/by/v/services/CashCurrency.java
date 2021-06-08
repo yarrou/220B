@@ -8,10 +8,11 @@ import org.springframework.stereotype.Component;
 public final class CashCurrency {
     private static volatile CashCurrency instance;
     private Currency currency;
-    @Autowired
-    ProviderFromNBRB provider;
+    private ProviderFromNBRB provider;
+
 
     private CashCurrency() {
+        this.provider = new ProviderFromNBRB();
         this.currency = provider.getNowCurrency();
     }
 
